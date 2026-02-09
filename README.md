@@ -16,14 +16,25 @@ Design patterns are **reusable solutions** to common problems in software design
 design-patterns/
 ├── README.md
 ├── .gitignore
-└── singleton/
+├── singleton/
+│   ├── README.md
+│   └── src/
+│       ├── singleton_1.py    # @staticmethod approach
+│       ├── singleton_2.py    # __new__ approach
+│       ├── singleton_3.py    # @classmethod approach
+│       └── example/
+│           └── config.py     # Real-world config manager
+└── factory/
     ├── README.md
     └── src/
-        ├── singleton_1.py    # @staticmethod approach
-        ├── singleton_2.py    # __new__ approach
-        ├── singleton_3.py    # @classmethod approach
+        ├── factory_1.py      # Basic vehicle factory
         └── example/
-            └── config.py     # Real-world config manager
+            ├── main.py       # Bank client + demo runs
+            └── account/
+                ├── bank_account.py        # Abstract Product + Factory
+                ├── saving_account.py      # 4.5% interest
+                ├── checking_account.py    # 1.5% interest
+                └── business_account.py    # 3.0% interest
 ```
 
 ---
@@ -35,9 +46,14 @@ design-patterns/
 git clone <repo-url>
 cd design-patterns
 
-# Run any pattern example
+# Run singleton examples
 python singleton/src/singleton_1.py
 python singleton/src/example/config.py
+
+# Run factory examples
+cd factory
+python -m src.factory_1
+python -m src.example.main
 ```
 
 
