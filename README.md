@@ -24,17 +24,26 @@ design-patterns/
 │       ├── singleton_3.py    # @classmethod approach
 │       └── example/
 │           └── config.py     # Real-world config manager
-└── factory/
+├── factory/
+│   ├── README.md
+│   └── src/
+│       ├── factory_1.py      # Basic vehicle factory
+│       └── example/
+│           ├── main.py       # Bank client + demo runs
+│           └── account/
+│               ├── bank_account.py        # Abstract Product + Factory
+│               ├── saving_account.py      # 4.5% interest
+│               ├── checking_account.py    # 1.5% interest
+│               └── business_account.py    # 3.0% interest
+└── observer/
     ├── README.md
     └── src/
-        ├── factory_1.py      # Basic vehicle factory
+        ├── observer_1.py     # Basic subject-observer
         └── example/
-            ├── main.py       # Bank client + demo runs
-            └── account/
-                ├── bank_account.py        # Abstract Product + Factory
-                ├── saving_account.py      # 4.5% interest
-                ├── checking_account.py    # 1.5% interest
-                └── business_account.py    # 3.0% interest
+            ├── main.py       # Async weather broker demo
+            ├── broker.py     # Topic management + message queue
+            ├── producer.py   # Publishes to brokers
+            └── consumer.py   # Receives messages
 ```
 
 ---
@@ -54,6 +63,10 @@ python singleton/src/example/config.py
 cd factory
 python -m src.factory_1
 python -m src.example.main
+
+# Run observer examples
+python observer/src/observer_1.py
+cd observer/src/example && python main.py
 ```
 
 
