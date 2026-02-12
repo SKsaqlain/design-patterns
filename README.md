@@ -8,6 +8,19 @@ A collection of design pattern implementations with detailed comments and real-w
 
 Design patterns are **reusable solutions** to common problems in software design. They're not finished code, but templates for solving problems that can be adapted to your specific situation.
 
+---
+
+## SOLID Principles 🧱
+
+SOLID is a set of five design principles that help make software **maintainable, flexible, and scalable**. These principles are closely tied to design patterns — most patterns exist to help you follow one or more SOLID principles.
+
+| Letter | Principle | What It Means |
+|--------|-----------|---------------|
+| **S** | **Single Responsibility** | A class should have **one reason to change** — it does one job and does it well. |
+| **O** | **Open/Closed** | Classes should be **open for extension** but **closed for modification** — add new behavior without changing existing code. |
+| **L** | **Liskov Substitution** | Subclasses should be **substitutable** for their parent class — swapping a subclass in should not break the program. |
+| **I** | **Interface Segregation** | Clients should not be forced to depend on **interfaces they don't use** — prefer smaller, focused interfaces over large ones. |
+| **D** | **Dependency Inversion** | Depend on **abstractions, not concretions** — high-level modules should not depend on low-level modules, both should depend on abstractions. |
 
 
 ## Project Structure 📁
@@ -35,15 +48,25 @@ design-patterns/
 │               ├── saving_account.py      # 4.5% interest
 │               ├── checking_account.py    # 1.5% interest
 │               └── business_account.py    # 3.0% interest
-└── observer/
+├── observer/
+│   ├── README.md
+│   └── src/
+│       ├── observer_1.py     # Basic subject-observer
+│       └── example/
+│           ├── main.py       # Async weather broker demo
+│           ├── broker.py     # Topic management + message queue
+│           ├── producer.py   # Publishes to brokers
+│           └── consumer.py   # Receives messages
+└── abstract_factory/
     ├── README.md
     └── src/
-        ├── observer_1.py     # Basic subject-observer
+        ├── abstract_factory_1.py   # Regional car factory
         └── example/
-            ├── main.py       # Async weather broker demo
-            ├── broker.py     # Topic management + message queue
-            ├── producer.py   # Publishes to brokers
-            └── consumer.py   # Receives messages
+            ├── main.py             # Cloud service demo
+            ├── cloud_service.py    # Abstract + AWS/GCP/Azure factories
+            ├── virtual_machine.py  # VM product family
+            ├── database.py         # Database product family
+            └── storage.py          # Storage product family
 ```
 
 ---
@@ -67,6 +90,10 @@ python -m src.example.main
 # Run observer examples
 python observer/src/observer_1.py
 cd observer/src/example && python main.py
+
+# Run abstract factory examples
+python abstract_factory/src/abstract_factory_1.py
+cd abstract_factory && python -m src.example.main
 ```
 
 
