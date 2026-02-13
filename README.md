@@ -57,16 +57,29 @@ design-patterns/
 │           ├── broker.py     # Topic management + message queue
 │           ├── producer.py   # Publishes to brokers
 │           └── consumer.py   # Receives messages
-└── abstract_factory/
+├── abstract_factory/
+│   ├── README.md
+│   └── src/
+│       ├── abstract_factory_1.py   # Regional car factory
+│       └── example/
+│           ├── main.py             # Cloud service demo
+│           ├── cloud_service.py    # Abstract + AWS/GCP/Azure factories
+│           ├── virtual_machine.py  # VM product family
+│           ├── database.py         # Database product family
+│           └── storage.py          # Storage product family
+└── adapter-pattern/
     ├── README.md
     └── src/
-        ├── abstract_factory_1.py   # Regional car factory
+        ├── adapter_pattern_1.py    # Basic printer adapter
         └── example/
-            ├── main.py             # Cloud service demo
-            ├── cloud_service.py    # Abstract + AWS/GCP/Azure factories
-            ├── virtual_machine.py  # VM product family
-            ├── database.py         # Database product family
-            └── storage.py          # Storage product family
+            ├── main.py             # CRM integration demo
+            ├── adapter.py          # Target interface (abstract)
+            ├── customer.py         # Unified data model (dataclass)
+            ├── client.py           # Client — works with any adapter
+            ├── net_suite_api.py    # Adaptee A — NetSuite CRM
+            ├── net_suite_adapter.py        # Adapter A — NetSuite → Customer
+            ├── business_central_api.py     # Adaptee B — Business Central CRM
+            └── business_central_adapter.py # Adapter B — Business Central → Customer
 ```
 
 ---
@@ -94,6 +107,10 @@ cd observer/src/example && python main.py
 # Run abstract factory examples
 python abstract_factory/src/abstract_factory_1.py
 cd abstract_factory && python -m src.example.main
+
+# Run adapter pattern examples
+python adapter-pattern/src/adapter_pattern_1.py
+cd adapter-pattern && python -m src.example.main
 ```
 
 
