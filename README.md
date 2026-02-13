@@ -67,7 +67,7 @@ design-patterns/
 │           ├── virtual_machine.py  # VM product family
 │           ├── database.py         # Database product family
 │           └── storage.py          # Storage product family
-└── adapter-pattern/
+└── adapter_pattern/
     ├── README.md
     └── src/
         ├── adapter_pattern_1.py    # Basic printer adapter
@@ -109,8 +109,8 @@ python abstract_factory/src/abstract_factory_1.py
 cd abstract_factory && python -m src.example.main
 
 # Run adapter pattern examples
-python adapter-pattern/src/adapter_pattern_1.py
-cd adapter-pattern && python -m src.example.main
+python adapter_pattern/src/adapter_pattern_1.py
+cd adapter_pattern && python -m src.example.main
 ```
 
 

@@ -214,10 +214,10 @@ Each CRM API uses different field names. The adapters handle the translation:
 
 ```bash
 # Run the basic printer adapter example
-python adapter-pattern/src/adapter_pattern_1.py
+python adapter_pattern/src/adapter_pattern_1.py
 
 # Run the CRM integration example
-cd adapter-pattern
+cd adapter_pattern
 python -m src.example.main
 ```
 
