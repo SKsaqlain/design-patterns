@@ -67,19 +67,27 @@ design-patterns/
 │           ├── virtual_machine.py  # VM product family
 │           ├── database.py         # Database product family
 │           └── storage.py          # Storage product family
-└── adapter_pattern/
+├── adapter_pattern/
+│   ├── README.md
+│   └── src/
+│       ├── adapter_pattern_1.py    # Basic printer adapter
+│       └── example/
+│           ├── main.py             # CRM integration demo
+│           ├── adapter.py          # Target interface (abstract)
+│           ├── customer.py         # Unified data model (dataclass)
+│           ├── client.py           # Client — works with any adapter
+│           ├── net_suite_api.py    # Adaptee A — NetSuite CRM
+│           ├── net_suite_adapter.py        # Adapter A — NetSuite → Customer
+│           ├── business_central_api.py     # Adaptee B — Business Central CRM
+│           └── business_central_adapter.py # Adapter B — Business Central → Customer
+└── strategy_design_pattern/
     ├── README.md
     └── src/
-        ├── adapter_pattern_1.py    # Basic printer adapter
+        ├── strategy_1.py           # Basic sorting strategy
         └── example/
-            ├── main.py             # CRM integration demo
-            ├── adapter.py          # Target interface (abstract)
-            ├── customer.py         # Unified data model (dataclass)
-            ├── client.py           # Client — works with any adapter
-            ├── net_suite_api.py    # Adaptee A — NetSuite CRM
-            ├── net_suite_adapter.py        # Adapter A — NetSuite → Customer
-            ├── business_central_api.py     # Adaptee B — Business Central CRM
-            └── business_central_adapter.py # Adapter B — Business Central → Customer
+            ├── main.py             # Payment processing demo
+            ├── payment_strategy.py # Strategy interface + CreditCard/PayPal/Crypto
+            └── payment_processor.py # Context — delegates to active strategy
 ```
 
 ---
@@ -111,6 +119,10 @@ cd abstract_factory && python -m src.example.main
 # Run adapter pattern examples
 python adapter_pattern/src/adapter_pattern_1.py
 cd adapter_pattern && python -m src.example.main
+
+# Run strategy pattern examples
+python strategy_design_pattern/src/strategy_1.py
+cd strategy_design_pattern && python -m src.example.main
 ```
 
 
