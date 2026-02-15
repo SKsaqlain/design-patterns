@@ -80,14 +80,25 @@ design-patterns/
 │           ├── net_suite_adapter.py        # Adapter A — NetSuite → Customer
 │           ├── business_central_api.py     # Adaptee B — Business Central CRM
 │           └── business_central_adapter.py # Adapter B — Business Central → Customer
-└── strategy_design_pattern/
+├── strategy_design_pattern/
+│   ├── README.md
+│   └── src/
+│       ├── strategy_1.py           # Basic sorting strategy
+│       └── example/
+│           ├── main.py             # Payment processing demo
+│           ├── payment_strategy.py # Strategy interface + CreditCard/PayPal/Crypto
+│           └── payment_processor.py # Context — delegates to active strategy
+└── decorator/
     ├── README.md
     └── src/
-        ├── strategy_1.py           # Basic sorting strategy
+        ├── decorator_1.py          # Basic coffee decorator
         └── example/
-            ├── main.py             # Payment processing demo
-            ├── payment_strategy.py # Strategy interface + CreditCard/PayPal/Crypto
-            └── payment_processor.py # Context — delegates to active strategy
+            ├── main.py             # DataSource pipeline demo
+            ├── data_source.py      # Component interface (abstract)
+            ├── file_data_source.py # Concrete component — raw file data
+            ├── base_decorator.py   # Base decorator — wraps and delegates
+            ├── uppercase_decorator.py  # Concrete decorator — uppercase transform
+            └── logging_decorator.py    # Concrete decorator — logs fetch calls
 ```
 
 ---
@@ -123,6 +134,10 @@ cd adapter_pattern && python -m src.example.main
 # Run strategy pattern examples
 python strategy_design_pattern/src/strategy_1.py
 cd strategy_design_pattern && python -m src.example.main
+
+# Run decorator pattern examples
+python decorator/src/decorator_1.py
+cd decorator && python -m src.example.main
 ```
 
 
