@@ -6,16 +6,16 @@ The **Decorator** pattern lets you attach new behavior to objects by wrapping th
 
 ```
 ┌─────────────────────────────────────────────────┐
-│              LoggingDecorator                    │
+│              LoggingDecorator                   │
 │  ┌───────────────────────────────────────────┐  │
-│  │          UppercaseDecorator                │  │
+│  │          UppercaseDecorator               │  │
 │  │  ┌─────────────────────────────────────┐  │  │
 │  │  │         FileDataSource              │  │  │
 │  │  │         "fetching data"             │  │  │
 │  │  └─────────────────────────────────────┘  │  │
 │  │           → "FETCHING DATA"               │  │
 │  └───────────────────────────────────────────┘  │
-│         → logs before & after fetch              │
+│         → logs before & after fetch             │
 └─────────────────────────────────────────────────┘
 ```
 
