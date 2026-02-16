@@ -1,32 +1,25 @@
+import logging
 
-    
+from src.example.ml_pipeline import MLModelTest, MLModelTestDirector
 
-
-
-    
-
-
-    
-    
-
-from abc import ABC
-from src.example.ml_pipeline import MLModelTest, MLPipeline, MlModelTestDirector
-from src.example.evaluation import Evaluation, F1Score
-from src.example.model import LogisticRegression, Model
-from src.example.preprocessing import Normalize, Preprocessing
-from src.example.datasource import S3, DataSource
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s | %(levelname)-7s | %(name)-20s | %(message)s",
+    datefmt="%H:%M:%S"
+)
+logger = logging.getLogger(__name__)
 
 
+if __name__ == '__main__':
+    logger.info("=== Builder Pattern — ML Pipeline Example ===")
 
-if __name__=='__main__':
-    ml_model_test=MLModelTest()
-    ml_director=MlModelTestDirector()
-    ml_director.build_pipeline(ml_model_test)
-    ml_model_test.get_info()
+    # Create a concrete builder — knows which components to use
+    ml_builder = MLModelTest()
 
-    
+    # Director orchestrates the build steps in the correct order
+    director = MLModelTestDirector()
+    director.build_pipeline(ml_builder)
 
-
-
-
-        
+    # Retrieve the finished product from the builder
+    ml_pipeline = ml_builder.get_result()
+    ml_pipeline.get_pipeline_config()  # Display the assembled pipeline
