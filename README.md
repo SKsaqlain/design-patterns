@@ -88,17 +88,28 @@ design-patterns/
 │           ├── main.py             # Payment processing demo
 │           ├── payment_strategy.py # Strategy interface + CreditCard/PayPal/Crypto
 │           └── payment_processor.py # Context — delegates to active strategy
-└── decorator/
+├── decorator/
+│   ├── README.md
+│   └── src/
+│       ├── decorator_1.py          # Basic coffee decorator
+│       └── example/
+│           ├── main.py             # DataSource pipeline demo
+│           ├── data_source.py      # Component interface (abstract)
+│           ├── file_data_source.py # Concrete component — raw file data
+│           ├── base_decorator.py   # Base decorator — wraps and delegates
+│           ├── uppercase_decorator.py  # Concrete decorator — uppercase transform
+│           └── logging_decorator.py    # Concrete decorator — logs fetch calls
+└── builder_pattern/
     ├── README.md
     └── src/
-        ├── decorator_1.py          # Basic coffee decorator
+        ├── builder_1.py            # Basic computer builder
         └── example/
-            ├── main.py             # DataSource pipeline demo
-            ├── data_source.py      # Component interface (abstract)
-            ├── file_data_source.py # Concrete component — raw file data
-            ├── base_decorator.py   # Base decorator — wraps and delegates
-            ├── uppercase_decorator.py  # Concrete decorator — uppercase transform
-            └── logging_decorator.py    # Concrete decorator — logs fetch calls
+            ├── main.py             # ML pipeline demo
+            ├── ml_pipeline.py      # Product + Builder + Concrete Builder + Director
+            ├── datasource.py       # Pipeline component — DataSource + S3
+            ├── preprocessing.py    # Pipeline component — Preprocessing + Normalize
+            ├── model.py            # Pipeline component — Model + LogisticRegression
+            └── evaluation.py       # Pipeline component — Evaluation + F1Score
 ```
 
 ---
@@ -138,6 +149,10 @@ cd strategy_design_pattern && python -m src.example.main
 # Run decorator pattern examples
 python decorator/src/decorator_1.py
 cd decorator && python -m src.example.main
+
+# Run builder pattern examples
+python builder_pattern/src/builder_1.py
+cd builder_pattern && python -m src.example.main
 ```
 
 
