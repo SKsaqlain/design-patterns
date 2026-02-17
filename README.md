@@ -99,17 +99,25 @@ design-patterns/
 │           ├── base_decorator.py   # Base decorator — wraps and delegates
 │           ├── uppercase_decorator.py  # Concrete decorator — uppercase transform
 │           └── logging_decorator.py    # Concrete decorator — logs fetch calls
-└── builder_pattern/
+├── builder_pattern/
+│   ├── README.md
+│   └── src/
+│       ├── builder_1.py            # Basic computer builder
+│       └── example/
+│           ├── main.py             # ML pipeline demo
+│           ├── ml_pipeline.py      # Product + Builder + Concrete Builder + Director
+│           ├── datasource.py       # Pipeline component — DataSource + S3
+│           ├── preprocessing.py    # Pipeline component — Preprocessing + Normalize
+│           ├── model.py            # Pipeline component — Model + LogisticRegression
+│           └── evaluation.py       # Pipeline component — Evaluation + F1Score
+└── object_pool/
     ├── README.md
     └── src/
-        ├── builder_1.py            # Basic computer builder
+        ├── object_pool_1.py        # Basic synchronous connection pool
         └── example/
-            ├── main.py             # ML pipeline demo
-            ├── ml_pipeline.py      # Product + Builder + Concrete Builder + Director
-            ├── datasource.py       # Pipeline component — DataSource + S3
-            ├── preprocessing.py    # Pipeline component — Preprocessing + Normalize
-            ├── model.py            # Pipeline component — Model + LogisticRegression
-            └── evaluation.py       # Pipeline component — Evaluation + F1Score
+            ├── main.py             # Async pool demo with 5 tests
+            ├── object_pool.py      # Generic async ObjectPool (asyncio.Queue)
+            └── database_connection.py  # Pooled resource — SQLite connection
 ```
 
 ---
@@ -153,6 +161,10 @@ cd decorator && python -m src.example.main
 # Run builder pattern examples
 python builder_pattern/src/builder_1.py
 cd builder_pattern && python -m src.example.main
+
+# Run object pool examples
+python object_pool/src/object_pool_1.py
+cd object_pool && python -m src.example.main
 ```
 
 
