@@ -110,14 +110,24 @@ design-patterns/
 │           ├── preprocessing.py    # Pipeline component — Preprocessing + Normalize
 │           ├── model.py            # Pipeline component — Model + LogisticRegression
 │           └── evaluation.py       # Pipeline component — Evaluation + F1Score
-└── object_pool/
+├── object_pool/
+│   ├── README.md
+│   └── src/
+│       ├── object_pool_1.py        # Basic synchronous connection pool
+│       └── example/
+│           ├── main.py             # Async pool demo with 5 tests
+│           ├── object_pool.py      # Generic async ObjectPool (asyncio.Queue)
+│           └── database_connection.py  # Pooled resource — SQLite connection
+└── command/
     ├── README.md
     └── src/
-        ├── object_pool_1.py        # Basic synchronous connection pool
+        ├── command_1.py            # Basic remote control with devices
         └── example/
-            ├── main.py             # Async pool demo with 5 tests
-            ├── object_pool.py      # Generic async ObjectPool (asyncio.Queue)
-            └── database_connection.py  # Pooled resource — SQLite connection
+            ├── main.py             # Text editor undo/redo demo
+            ├── command.py          # Command interface (execute + undo)
+            ├── text_editor.py      # Receiver — text insert/delete
+            ├── commands.py         # InsertCommand + DeleteCommand
+            └── command_manager.py  # Invoker — undo/redo stacks
 ```
 
 ---
@@ -165,6 +175,10 @@ cd builder_pattern && python -m src.example.main
 # Run object pool examples
 python object_pool/src/object_pool_1.py
 cd object_pool && python -m src.example.main
+
+# Run command pattern examples
+python command/src/command_1.py
+cd command && python -m src.example.main
 ```
 
 
