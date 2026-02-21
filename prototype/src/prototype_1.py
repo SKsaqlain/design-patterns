@@ -41,6 +41,7 @@ class ShapeClient:
 
 
 if __name__ == '__main__':
+    
     red_circle_prototype = CirclePrototype('red')  # original prototype
     red_circle_prototype.draw()
 
