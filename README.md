@@ -118,16 +118,24 @@ design-patterns/
 │           ├── main.py             # Async pool demo with 5 tests
 │           ├── object_pool.py      # Generic async ObjectPool (asyncio.Queue)
 │           └── database_connection.py  # Pooled resource — SQLite connection
-└── command/
+├── command/
+│   ├── README.md
+│   └── src/
+│       ├── command_1.py            # Basic remote control with devices
+│       └── example/
+│           ├── main.py             # Text editor undo/redo demo
+│           ├── command.py          # Command interface (execute + undo)
+│           ├── text_editor.py      # Receiver — text insert/delete
+│           ├── commands.py         # InsertCommand + DeleteCommand
+│           └── command_manager.py  # Invoker — undo/redo stacks
+└── prototype/
     ├── README.md
     └── src/
-        ├── command_1.py            # Basic remote control with devices
+        ├── prototype_1.py          # Basic shape cloning
         └── example/
-            ├── main.py             # Text editor undo/redo demo
-            ├── command.py          # Command interface (execute + undo)
-            ├── text_editor.py      # Receiver — text insert/delete
-            ├── commands.py         # InsertCommand + DeleteCommand
-            └── command_manager.py  # Invoker — undo/redo stacks
+            ├── main.py             # Game character profile demo with 5 tests
+            ├── player.py           # Prototype interface + Mage, Warrior, Rogue
+            └── player_client.py    # Client — clones profiles via prototype
 ```
 
 ---
@@ -179,6 +187,10 @@ cd object_pool && python -m src.example.main
 # Run command pattern examples
 python command/src/command_1.py
 cd command && python -m src.example.main
+
+# Run prototype pattern examples
+python prototype/src/prototype_1.py
+cd prototype && python -m src.example.main
 ```
 
 
