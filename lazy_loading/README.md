@@ -6,15 +6,15 @@
 
 ```
 ┌──────────────┐   get_data()   ┌─────────────────────┐
-│    Client     │ ────────────▶ │      Proxy           │
-│               │               │  (Lazy Wrapper)      │
+│    Client     │ ────────────▶ │      Proxy          │
+│               │               │  (Lazy Wrapper)     │
 │               │               ├─────────────────────┤
-│               │               │  data = None         │
-│               │               │                      │
-│               │               │  if data is None:    │
-│               │               │    data = RealImpl() │ ──▶ expensive creation
-│               │               │  return data         │
-└──────────────┘               └─────────────────────┘
+│               │               │  data = None        │
+│               │               │                     │
+│               │               │  if data is None:   │
+│               │               │    data = RealImpl()│ ──▶ expensive creation
+│               │               │  return data        │
+└──────────────┘                └─────────────────────┘
 ```
 
 ---

@@ -128,14 +128,19 @@ design-patterns/
 │           ├── text_editor.py      # Receiver — text insert/delete
 │           ├── commands.py         # InsertCommand + DeleteCommand
 │           └── command_manager.py  # Invoker — undo/redo stacks
-└── prototype/
+├── prototype/
+│   ├── README.md
+│   └── src/
+│       ├── prototype_1.py          # Basic shape cloning
+│       └── example/
+│           ├── main.py             # Game character profile demo with 5 tests
+│           ├── player.py           # Prototype interface + Mage, Warrior, Rogue
+│           └── player_client.py    # Client — clones profiles via prototype
+└── lazy_loading/
     ├── README.md
     └── src/
-        ├── prototype_1.py          # Basic shape cloning
-        └── example/
-            ├── main.py             # Game character profile demo with 5 tests
-            ├── player.py           # Prototype interface + Mage, Warrior, Rogue
-            └── player_client.py    # Client — clones profiles via prototype
+        ├── lazy_loading_1.py       # Lazy registry — Car type created on first request
+        └── lazy_loading_2.py       # Virtual proxy — ContactList loaded on first access
 ```
 
 ---
@@ -191,6 +196,10 @@ cd command && python -m src.example.main
 # Run prototype pattern examples
 python prototype/src/prototype_1.py
 cd prototype && python -m src.example.main
+
+# Run lazy loading examples
+python lazy_loading/src/lazy_loading_1.py
+python lazy_loading/src/lazy_loading_2.py
 ```
 
 
