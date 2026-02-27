@@ -140,7 +140,12 @@ design-patterns/
     ├── README.md
     └── src/
         ├── lazy_loading_1.py       # Lazy registry — Car type created on first request
-        └── lazy_loading_2.py       # Virtual proxy — ContactList loaded on first access
+        ├── lazy_loading_2.py       # Virtual proxy — ContactList loaded on first access
+        └── example/
+            ├── main.py             # Ghost object demo with 5 tests
+            ├── ghost_product.py    # Ghost Object — loads on first property access
+            ├── product_catalog.py  # Catalog of ghost products
+            └── product_db.py       # Simulated product database
 ```
 
 ---
@@ -200,6 +205,7 @@ cd prototype && python -m src.example.main
 # Run lazy loading examples
 python lazy_loading/src/lazy_loading_1.py
 python lazy_loading/src/lazy_loading_2.py
+cd lazy_loading && python -m src.example.main
 ```
 
 

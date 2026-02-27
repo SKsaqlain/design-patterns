@@ -147,6 +147,61 @@ Employee Name: Achint, Employee Designation: SE, Employee Salary: 2847.01
 
 ---
 
+## Real-World Example: Ghost Object — Product Catalog 👻
+
+See `example/` for a Ghost Object implementation where products in a catalog start as lightweight shells (just an ID) and load their full details from a simulated database only when a property is first accessed.
+
+### What is a Ghost Object?
+
+A Ghost Object is a **partially initialized placeholder** that holds only an identifier. When any real property (name, price, etc.) is accessed, the ghost transparently fetches the full data and caches it — subsequent access is instant.
+
+### Structure
+
+```
+example/
+├── main.py             # Entry point — 5 tests demonstrating ghost behavior
+├── ghost_product.py    # Ghost Object — loads full data on first property access
+├── product_catalog.py  # Catalog holding a list of ghost products
+└── product_db.py       # Simulated database with fetch delay
+```
+
+### How It Works
+
+```python
+class GhostProduct:
+    def __init__(self, product_id):
+        self.product_id = product_id  # lightweight — always available
+        self._loaded = False          # full data not fetched yet
+
+    def _load(self):
+        if not self._loaded:
+            data = fetch_product_by_id(self.product_id)  # expensive DB call
+            self._name = data["name"]
+            self._price = data["price"]
+            self._loaded = True  # future access skips the fetch
+
+    @property
+    def name(self):
+        self._load()  # trigger lazy load if needed
+        return self._name
+
+# Catalog — all products start as ghosts
+catalog = ProductCatalog(["P001", "P002", "P003"])  # no DB calls yet
+print(catalog.get_product("P001").name)              # triggers load for P001 only
+```
+
+### Tests in `main.py`
+
+| Test | What It Verifies |
+|------|-----------------|
+| **Test 1** | Catalog creation — all products are ghosts, zero DB calls |
+| **Test 2** | Accessing `.name` triggers load for that product only |
+| **Test 3** | Repeated property access reuses cached data, no extra DB call |
+| **Test 4** | Unaccessed products remain as ghosts |
+| **Test 5** | Loading all products and verifying their data |
+
+---
+
 ## Structure
 
 ```
@@ -154,7 +209,12 @@ lazy_loading/
 ├── README.md
 └── src/
     ├── lazy_loading_1.py    # Lazy registry — Car type created on first request
-    └── lazy_loading_2.py    # Virtual proxy — ContactList loaded on first access
+    ├── lazy_loading_2.py    # Virtual proxy — ContactList loaded on first access
+    └── example/
+        ├── main.py             # Ghost object demo with 5 tests
+        ├── ghost_product.py    # Ghost Object — loads on first property access
+        ├── product_catalog.py  # Catalog of ghost products
+        └── product_db.py       # Simulated product database
 ```
 
 ---
@@ -178,6 +238,10 @@ python lazy_loading/src/lazy_loading_1.py
 
 # Run the virtual proxy example
 python lazy_loading/src/lazy_loading_2.py
+
+# Run the ghost object example
+cd lazy_loading
+python -m src.example.main
 ```
 
 ---
