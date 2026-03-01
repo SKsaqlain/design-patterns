@@ -35,3 +35,27 @@ class HotelKeeper(ABC):
     @abstractmethod
     def getGeneralMenu(self):
         pass
+
+class HotelKeeperImpl(HotelKeeper):
+    def getVegMenu(self):
+        v=VegRestaurant()
+        menu=v.get_menus()
+        return menu
+    
+    def getNonVegMeny(self):
+        nv=NonVegRestaurant()
+        menu=nv.get_menus
+        return menu
+    
+    def getGeneralMenu(self):
+        g=GeneralRestaurant()
+        menu=g.get_menus()
+        return menu
+    
+class VegMenu:
+    pass
+
+class NonVegMenu:
+    pass
+class Both:
+    pass
