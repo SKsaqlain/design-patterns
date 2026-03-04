@@ -136,16 +136,20 @@ design-patterns/
 │           ├── main.py             # Game character profile demo with 5 tests
 │           ├── player.py           # Prototype interface + Mage, Warrior, Rogue
 │           └── player_client.py    # Client — clones profiles via prototype
-└── lazy_loading/
+├── lazy_loading/
+│   ├── README.md
+│   └── src/
+│       ├── lazy_loading_1.py       # Lazy registry — Car type created on first request
+│       ├── lazy_loading_2.py       # Virtual proxy — ContactList loaded on first access
+│       └── example/
+│           ├── main.py             # Ghost object demo with 5 tests
+│           ├── ghost_product.py    # Ghost Object — loads on first property access
+│           ├── product_catalog.py  # Catalog of ghost products
+│           └── product_db.py       # Simulated product database
+└── facade/
     ├── README.md
     └── src/
-        ├── lazy_loading_1.py       # Lazy registry — Car type created on first request
-        ├── lazy_loading_2.py       # Virtual proxy — ContactList loaded on first access
-        └── example/
-            ├── main.py             # Ghost object demo with 5 tests
-            ├── ghost_product.py    # Ghost Object — loads on first property access
-            ├── product_catalog.py  # Catalog of ghost products
-            └── product_db.py       # Simulated product database
+        └── facade_1.py             # Hotel keeper facade with restaurant subsystem
 ```
 
 ---
@@ -206,6 +210,9 @@ cd prototype && python -m src.example.main
 python lazy_loading/src/lazy_loading_1.py
 python lazy_loading/src/lazy_loading_2.py
 cd lazy_loading && python -m src.example.main
+
+# Run facade pattern example
+python facade/src/facade_1.py
 ```
 
 
