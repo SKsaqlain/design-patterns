@@ -9,6 +9,6 @@ logger = logging.getLogger(__name__)
 if __name__ == '__main__':
     bank = Bank()  # facade — client only interacts with this
 
-    bank.get_account_details('123456789')
-    bank.transfer_funds('123456789', '987654321', 100.00)
-    bank.pay_bill('123456789', 'BILL001', 59.99)
+    bank.get_account_details('123456789')  # delegates to AccountService
+    bank.transfer_funds('123456789', '987654321', 100.00)  # delegates to TransferService
+    bank.pay_bill('123456789', 'BILL001', 59.99)  # delegates to BillPaymentService

@@ -149,7 +149,13 @@ design-patterns/
 └── facade/
     ├── README.md
     └── src/
-        └── facade_1.py             # Hotel keeper facade with restaurant subsystem
+        ├── facade_1.py             # Hotel keeper facade with restaurant subsystem
+        └── example/
+            ├── main.py             # Banking facade demo
+            ├── bank.py             # Facade — delegates to subsystems
+            ├── accounting_service.py   # Subsystem — account lookups
+            ├── transfer_service.py     # Subsystem — fund transfers
+            └── bill_payment_service.py # Subsystem — bill payments
 ```
 
 ---
@@ -211,8 +217,9 @@ python lazy_loading/src/lazy_loading_1.py
 python lazy_loading/src/lazy_loading_2.py
 cd lazy_loading && python -m src.example.main
 
-# Run facade pattern example
+# Run facade pattern examples
 python facade/src/facade_1.py
+cd facade && python -m src.example.main
 ```
 
 

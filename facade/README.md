@@ -117,13 +117,87 @@ General Menu
 
 ---
 
+## Real-World Example: Banking Facade 🔧
+
+See `example/` for a practical facade where a `Bank` class provides a simple API over three independent subsystem services — account lookup, fund transfer, and bill payment.
+
+### Structure
+
+```
+example/
+├── main.py                  # Entry point — client uses only the Bank facade
+├── bank.py                  # Facade — delegates to subsystem services
+├── accounting_service.py    # Subsystem — handles account lookups
+├── transfer_service.py      # Subsystem — handles fund transfers
+└── bill_payment_service.py  # Subsystem — handles bill payments
+```
+
+### How It Works
+
+```python
+# Subsystem services — each handles one banking concern
+class AccountService:
+    def getAccountDetails(self, account_id): ...
+
+class TransferService:
+    def transfer_funds(self, from_id, to_id, amount): ...
+
+class BillPaymentService:
+    def pay_bill(self, account_id, bill_id, amount): ...
+
+# Facade — single entry point that delegates to subsystems
+class Bank:
+    def __init__(self):
+        self.accounting_service = AccountService()
+        self.transfer_service = TransferService()
+        self.bill_payment_service = BillPaymentService()
+
+    def get_account_details(self, account_id):
+        self.accounting_service.getAccountDetails(account_id)
+
+    def transfer_funds(self, from_id, to_id, amount):
+        self.transfer_service.transfer_funds(from_id, to_id, amount)
+
+    def pay_bill(self, account_id, bill_id, amount):
+        self.bill_payment_service.pay_bill(account_id, bill_id, amount)
+
+# Client — only knows about Bank
+bank = Bank()
+bank.get_account_details('123456789')
+bank.transfer_funds('123456789', '987654321', 100.00)
+bank.pay_bill('123456789', 'BILL001', 59.99)
+```
+
+### Sample Output
+
+```
+2026-03-06 10:00:00 - INFO - AccountService initialized
+2026-03-06 10:00:00 - INFO - TransferService initialized
+2026-03-06 10:00:00 - INFO - BillPaymentService initialized
+2026-03-06 10:00:00 - INFO - Bank facade initialized
+2026-03-06 10:00:00 - INFO - Bank: requesting account details for 123456789
+2026-03-06 10:00:00 - INFO - Fetching account details for account Id: 123456789
+2026-03-06 10:00:00 - INFO - Bank: initiating transfer of $100.0
+2026-03-06 10:00:00 - INFO - Transferring $100.0 from 123456789 to 987654321
+2026-03-06 10:00:00 - INFO - Bank: initiating bill payment for BILL001
+2026-03-06 10:00:00 - INFO - Paying bill BILL001 from account 123456789 with amount $59.99
+```
+
+---
+
 ## Structure
 
 ```
 facade/
 ├── README.md
 └── src/
-    └── facade_1.py    # Hotel keeper facade with restaurant subsystem
+    ├── facade_1.py                 # Hotel keeper facade with restaurant subsystem
+    └── example/
+        ├── main.py                 # Banking facade demo
+        ├── bank.py                 # Facade — delegates to subsystems
+        ├── accounting_service.py   # Subsystem — account lookups
+        ├── transfer_service.py     # Subsystem — fund transfers
+        └── bill_payment_service.py # Subsystem — bill payments
 ```
 
 ---
@@ -142,7 +216,12 @@ facade/
 ## Running the Example ▶️
 
 ```bash
+# Run the basic hotel menu example
 python facade/src/facade_1.py
+
+# Run the banking facade example
+cd facade
+python -m src.example.main
 ```
 
 ---
