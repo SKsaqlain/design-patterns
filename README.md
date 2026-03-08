@@ -146,16 +146,26 @@ design-patterns/
 │           ├── ghost_product.py    # Ghost Object — loads on first property access
 │           ├── product_catalog.py  # Catalog of ghost products
 │           └── product_db.py       # Simulated product database
-└── facade/
+├── facade/
+│   ├── README.md
+│   └── src/
+│       ├── facade_1.py             # Hotel keeper facade with restaurant subsystem
+│       └── example/
+│           ├── main.py             # Banking facade demo
+│           ├── bank.py             # Facade — delegates to subsystems
+│           ├── accounting_service.py   # Subsystem — account lookups
+│           ├── transfer_service.py     # Subsystem — fund transfers
+│           └── bill_payment_service.py # Subsystem — bill payments
+└── bridge/
     ├── README.md
     └── src/
-        ├── facade_1.py             # Hotel keeper facade with restaurant subsystem
+        ├── main.py                 # Basic vehicle manufacturing example
         └── example/
-            ├── main.py             # Banking facade demo
-            ├── bank.py             # Facade — delegates to subsystems
-            ├── accounting_service.py   # Subsystem — account lookups
-            ├── transfer_service.py     # Subsystem — fund transfers
-            └── bill_payment_service.py # Subsystem — bill payments
+            ├── main.py             # Message delivery demo
+            ├── message_sender.py   # Implementor interface (abstract)
+            ├── email_sender.py     # Concrete Implementor — email delivery
+            ├── sms_sender.py       # Concrete Implementor — SMS delivery
+            └── message.py          # Abstraction + UrgentMessage refined abstraction
 ```
 
 ---
@@ -220,6 +230,10 @@ cd lazy_loading && python -m src.example.main
 # Run facade pattern examples
 python facade/src/facade_1.py
 cd facade && python -m src.example.main
+
+# Run bridge pattern examples
+python bridge/src/main.py
+cd bridge && python -m src.example.main
 ```
 
 
