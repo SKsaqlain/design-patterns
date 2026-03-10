@@ -28,7 +28,7 @@ class Level1SupportHandler(SupportHandler):
         self.next_handler=next_handler
     
     def handle_request(self, request):
-        if request.priority== Priority.BASIC:
+        if request.priority == Priority.BASIC.name:
             print("Level 1 Support handled the request")
         elif self.next_handler is not None:
             self.next_handler.handle_request(request)
@@ -43,8 +43,8 @@ class Level2SupportHandler(SupportHandler):
         self.next_handler=next_handler
     
     def handle_request(self, request):
-        if request.priority== Priority.INTERMEDIATE:
-            print("Level s Support handled the request")
+        if request.priority== Priority.INTERMEDIATE.name:
+            print("Level 2 Support handled the request")
         elif self.next_handler is not None:
             self.next_handler.handle_request(request)
 
@@ -58,9 +58,22 @@ class Level3SupportHandler(SupportHandler):
         self.next_handler=next_handler
     
     def handle_request(self, request):
-        if request.priority== Priority.CRITICAL:
-            print("Level s Support handled the request")
+        if request.priority== Priority.CRITICAL.name:
+            print("Level 3 Support handled the request")
         else:
             print(" Cannot handle request ")
 
+
+if __name__=='__main__':
+    level1_handler=Level1SupportHandler()
+    level2_handler=Level2SupportHandler()
+    level3_handler=Level3SupportHandler()
+
+    level1_handler.set_next_handler(level2_handler)
+    level2_handler.set_next_handler(level3_handler)
+
+    level1_handler.handle_request(Request('BASIC'))
+    level1_handler.handle_request(Request('INTERMEDIATE'))
+    level1_handler.handle_request(Request('CRITICAL'))
+    level1_handler.handle_request(Request('XYZ'))
 
