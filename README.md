@@ -156,16 +156,20 @@ design-patterns/
 │           ├── accounting_service.py   # Subsystem — account lookups
 │           ├── transfer_service.py     # Subsystem — fund transfers
 │           └── bill_payment_service.py # Subsystem — bill payments
-└── bridge/
+├── bridge/
+│   ├── README.md
+│   └── src/
+│       ├── main.py                 # Basic vehicle manufacturing example
+│       └── example/
+│           ├── main.py             # Message delivery demo
+│           ├── message_sender.py   # Implementor interface (abstract)
+│           ├── email_sender.py     # Concrete Implementor — email delivery
+│           ├── sms_sender.py       # Concrete Implementor — SMS delivery
+│           └── message.py          # Abstraction + UrgentMessage refined abstraction
+└── chain_of_responsibility/
     ├── README.md
     └── src/
-        ├── main.py                 # Basic vehicle manufacturing example
-        └── example/
-            ├── main.py             # Message delivery demo
-            ├── message_sender.py   # Implementor interface (abstract)
-            ├── email_sender.py     # Concrete Implementor — email delivery
-            ├── sms_sender.py       # Concrete Implementor — SMS delivery
-            └── message.py          # Abstraction + UrgentMessage refined abstraction
+        └── main.py                 # Support ticket escalation chain demo
 ```
 
 ---
@@ -234,6 +238,9 @@ cd facade && python -m src.example.main
 # Run bridge pattern examples
 python bridge/src/main.py
 cd bridge && python -m src.example.main
+
+# Run chain of responsibility example
+python chain_of_responsibility/src/main.py
 ```
 
 
